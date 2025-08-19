@@ -1,26 +1,146 @@
 @import "tailwindcss";
+@import "./fire-effect.css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #f8f9fa;
+  --secondary: #e9ecef;
+  --accent: #00FFC2;
+  --alert: #FF6B35;
+  --alertBackground: #FFE5E0;
+  --maintenance: #FFD93D;
+  --textPrimary: #171717;
+  --textSecondary: #6c757d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-alert: var(--alert);
+  --color-alertBackground: var(--alertBackground);
+  --color-maintenance: var(--maintenance);
+  --color-textPrimary: var(--textPrimary);
+  --color-textSecondary: var(--textSecondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #121212;
+  --foreground: #ededed;
+  --primary: #1E1E1E;
+  --secondary: #2E2E2E;
+  --accent: #00FFC2;
+  --alert: #FF6B35;
+  --alertBackground: #FFE5E0;
+  --maintenance: #FFD93D;
+  --textPrimary: #FFFFFF;
+  --textSecondary: #CFCFCF;
+}
+
+/* Ensure full viewport coverage */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Force Cesium viewer to take full space */
+.cesium-viewer {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+.cesium-viewer-cesiumWidgetContainer {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+.cesium-widget {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+.cesium-widget canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Target Resium wrapper */
+[data-testid="cesium-viewer"] {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Ensure any Resium wrapper takes full space */
+div[class*="cesium"] {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* For horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #252525;
+  border-radius: 10px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: #424543;
+  border-radius: 10px;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;              /* auto | thin | none */
+  scrollbar-color: #424543 #252525;      /* thumb color | track color */
 }
